@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Cricket</title>
+<style type="text/css">
+	@font-face {
+  font-family: myFirstFont;
+  src: url(pr.ttf);
+}
+*{
+   font-family: myFirstFont;
+}
+fsize{
+	font-size: 20px;
+}
+
+</style>
+<script type="text/javascript">
+	function validateForm() {
+		let a = Number(document.getElementById("firstname").value);
+		let pincode = Number(document.getElementById("number").value);
+		let email = Number(document.getElementById("email").value);
+  		if (a == "") 
+  		{
+    		alert("Empty Fields Found");
+    		return false;
+	    }
+	    if (pincode == "") 
+  		{
+    		alert("Enter pincode");
+    	}
+	    if (pincode < 100000  || a > 999999)
+	    {
+	    	alert("Please Enter Valid Pin Code");
+	    	return false;
+	    }
+	    let email1 = email.split('@');
+	    if(email1.length !== 2) {
+        	alert("Enter Valid Email Error 101");
+    	}
+    	alert(email1p[1]);
+    	if(email1[1]='gmail.com')
+    	{
+    		alert("Enter Valid Email Error 102");
+    	}
+	}
+</script>
+</head>
+<body style="font-family: myFirstFont; background-color:#ff9998 ">
+	<h1 style="padding-left: 200">Registration</h1>
+	<form role="form" method="POST" style="padding-left: 50" id="form123" onsubmit="validateForm()">
+		First Name : <input type="text" name="firstname" id="firstname"><br><br>
+		Last Name : <input type="text" id="lastname" name="lastname"><br><br>
+		Email : <input type="text" name="email" id="email"><br><br>
+		Gender :<input type="radio" id="gender"> Male
+				<input type="radio" id="gender"> Female
+				<input type="radio" id="gender"> Other<br><br>
+		Date of Birth : <input type="Date" id="date"><br><br>
+		Are you above 18 yrs <input type="checkbox" id="bat"><br><br>
+		Address : <input type="textarea" id="add"><br><br>
+		Pin Code : <input type="number" id="number"><br><br>
+		Range of Runs Scored : 0 <input type="Range" id="range" value="0"> 10000<br><br>
+	</form>
+	<button style="margin-left: 150" type="submit" form="form123">Submit</button>
+</body>
+</html>
