@@ -5,7 +5,7 @@ from time import sleep
 
 def flood():
 
-	while True:
+	#while True:
 
 		text = ''.join(choice(ascii_letters+digits+whitespace) for i in range(2))
 		pyperclip.copy(text)

