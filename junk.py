@@ -1,4 +1,4 @@
-import pyperclip
+mport pyperclip
 import smtplib
 import time
 import keyboard

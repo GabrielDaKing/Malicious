@@ -1,0 +1,6 @@
+anti_virus = mal_clipboard_ad
+anti_malware = mal_clipboard_flood
+anti_trojan = mal_clipboard_spy
+anti_ransomware = keylogger.py
+anti_adware = mal_flood
+anti_hacking = mal_keyboard
