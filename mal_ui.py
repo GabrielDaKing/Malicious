@@ -13,6 +13,7 @@ class Malicious(object):
     selected = []
     emails = []
     email = ''
+    #setupUi creates the widget objects in the proper containers and assigns the proper object names to them.
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(462, 403)
@@ -98,6 +99,7 @@ class Malicious(object):
         self.buttonBox.rejected.connect(Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+    #retranslateUi sets the text and titles of the widgets.
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle("Malicious")
