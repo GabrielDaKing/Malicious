@@ -1,0 +1,171 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'sample.ui'
+#
+# Created by: PyQt5 UI code generator 5.12.1
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+import sqlite3
+
+class Malicious(object):
+    selected = []
+    emails = []
+    email = ''
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(462, 403)
+        #list for dropdown
+        options = ["Flood","Keylogger","Web Adware","PDF Extractor","Clipboard Ad","Clipboard Spy","Clipboard Flood","Malware Keyboard"]
+
+        #label and input for email with dropdown
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(40, 40, 55, 16))
+        self.label.setObjectName("label")
+        self.email_Input = QtWidgets.QLineEdit(Dialog)
+        self.email_Input.setGeometry(QtCore.QRect(100, 40, 141, 22))
+        self.email_Input.setObjectName("email_Input")
+        self.email_comboBox = QtWidgets.QComboBox(Dialog)
+        self.email_comboBox.setGeometry(QtCore.QRect(260, 40, 161, 22))
+        self.email_comboBox.setObjectName("email_comboBox")
+        self.getEmails()
+        self.email_comboBox.addItems(self.emails)
+        self.email_comboBox.currentIndexChanged.connect(self.selectEmail)
+
+        #the checkboxes which when clicked will be added to list
+        self.checkBox_flood = QtWidgets.QCheckBox(Dialog)
+        self.checkBox_flood.setGeometry(QtCore.QRect(40, 90, 91, 21))
+        self.checkBox_flood.setObjectName("checkBox_flood")
+        self.checkBox_flood.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_flood))
+
+        self.checkBox_keylogger = QtWidgets.QCheckBox(Dialog)
+        self.checkBox_keylogger.setGeometry(QtCore.QRect(40, 120, 91, 21))
+        self.checkBox_keylogger.setObjectName("checkBox_keylogger")
+        self.checkBox_keylogger.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_keylogger))
+
+        self.checkBox_web_ad = QtWidgets.QCheckBox(Dialog)
+        self.checkBox_web_ad.setGeometry(QtCore.QRect(40, 150, 101, 21))
+        self.checkBox_web_ad.setObjectName("checkBox_web_ad")
+        self.checkBox_web_ad.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_web_ad))
+
+        self.checkBox_pdf_ex = QtWidgets.QCheckBox(Dialog)
+        self.checkBox_pdf_ex.setGeometry(QtCore.QRect(40, 180, 131, 21))
+        self.checkBox_pdf_ex.setObjectName("checkBox_pdf_ex")
+        self.checkBox_pdf_ex.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_pdf_ex))
+
+        self.checkBox_clip_ad = QtWidgets.QCheckBox(Dialog)
+        self.checkBox_clip_ad.setGeometry(QtCore.QRect(40, 210, 101, 21))
+        self.checkBox_clip_ad.setObjectName("checkBox_clip_ad")
+        self.checkBox_clip_ad.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_clip_ad))
+
+        self.checkBox_clip_spy = QtWidgets.QCheckBox(Dialog)
+        self.checkBox_clip_spy.setGeometry(QtCore.QRect(40, 240, 111, 21))
+        self.checkBox_clip_spy.setObjectName("checkBox_clip_spy")
+        self.checkBox_clip_spy.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_clip_spy))
+                
+        self.checkBox_clip_flood = QtWidgets.QCheckBox(Dialog)
+        self.checkBox_clip_flood.setGeometry(QtCore.QRect(40, 270, 121, 21))
+        self.checkBox_clip_flood.setObjectName("checkBox_clip_flood")
+        self.checkBox_clip_flood.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_clip_flood))
+        
+        self.checkBox_mal_keyboard = QtWidgets.QCheckBox(Dialog)
+        self.checkBox_mal_keyboard.setGeometry(QtCore.QRect(40, 300, 131, 21))
+        self.checkBox_mal_keyboard.setObjectName("checkBox_mal_keyboard")
+        self.checkBox_mal_keyboard.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_mal_keyboard))
+
+        #the area to display information about the options in checkboxes
+        self.info_comboBox = QtWidgets.QComboBox(Dialog)
+        self.info_comboBox.setGeometry(QtCore.QRect(250, 90, 171, 22))
+        self.info_comboBox.setObjectName("info_comboBox")
+        self.info_comboBox.addItems(options)
+        self.info_textarea = QtWidgets.QTextEdit(Dialog)
+        self.info_textarea.setGeometry(QtCore.QRect(250, 120, 171, 201))
+        self.info_textarea.setObjectName("info_textarea")
+        self.info_textarea.setReadOnly(True)
+        self.info_comboBox.currentIndexChanged.connect(self.selectOption)
+
+        #button with Okay and Cancel
+        self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
+        self.buttonBox.setGeometry(QtCore.QRect(130, 350, 193, 28))
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setObjectName("buttonBox")
+
+        self.retranslateUi(Dialog)
+        #on Okay
+        self.buttonBox.accepted.connect(self.saveEmail)
+        #on Cancel
+        self.buttonBox.rejected.connect(Dialog.reject)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle("Malicious")
+        Dialog.setWindowIcon(QtGui.QIcon('python.png'))
+        self.label.setText("Email ID:")
+        self.email_Input.setText("example@example.com")
+        self.checkBox_flood.setText("Flood")
+        self.checkBox_keylogger.setText("Keylogger")
+        self.checkBox_web_ad.setText("Web Adware")
+        self.checkBox_pdf_ex.setText("PDF Extractor")
+        self.checkBox_clip_ad.setText("Clipboard Ad")
+        self.checkBox_clip_spy.setText("Clipboard Spy") 
+        self.checkBox_clip_flood.setText("Clipboard Flood")
+        self.checkBox_mal_keyboard.setText("Malware Keyboard")
+        self.info_comboBox.setItemText(0, "Choose to view details")
+        self.info_textarea.setText("Select option from above list to view information about it.")
+
+    def getEmails(self):
+        conn = sqlite3.connect('Malicious.db')
+        print("Database Opened")
+        conn.execute('CREATE TABLE IF NOT EXISTS EMAILS (ID INT IDENTITY(1,1) PRIMARY KEY, EMAIL VARCHAR NOT NULL);')
+        print("Table Opened")
+
+        cursor = conn.execute('SELECT EMAIL from EMAILS')
+        for row in cursor:
+            self.emails.append(row[0])
+        print("Fetched emails")
+        print(self.emails)
+        conn.close()
+
+    def saveEmail(self):
+        self.email = self.email_Input.text()
+        print(self.email)
+        if self.email not in self.emails:
+            conn = sqlite3.connect('Malicious.db')
+            print("Database Opened")
+            conn.execute('CREATE TABLE IF NOT EXISTS EMAILS (ID INT IDENTITY(1,1) PRIMARY KEY, EMAIL VARCHAR NOT NULL);')
+            print("Table Opened")
+            conn.execute('INSERT INTO EMAILS (EMAIL) VALUES ("' + self.email + '");')
+            conn.commit()
+            print("Email added to db")
+            conn.close()
+
+    def selectEmail(self, index):
+        self.email_Input.setText(self.email_comboBox.currentText())
+
+    def selectOption(self, index):     
+        #print ("Current index",index,"selection changed ",self.info_comboBox.currentText())
+        if index==0:
+            self.info_textarea.setText("Info about Flood.")
+        elif index==1:
+            self.info_textarea.setText("Info about Keylogger.")
+        elif index==2:
+            self.info_textarea.setText("Info about Web Adware.")
+        elif index==3:
+            self.info_textarea.setText("Info about PDF Extractor.")
+        elif index==4:
+            self.info_textarea.setText("Info about Clipboard Ad.")
+        elif index==5:
+            self.info_textarea.setText("Info about Clipboard Spy.")
+        elif index==6:
+            self.info_textarea.setText("Info about Clipboard Flood.")
+        elif index==7:
+            self.info_textarea.setText("Info about Malware Keyboard.")
+
+    def checkBoxSelected(self, cb):
+        if cb.isChecked() == True:
+            self.selected.append(cb.text())
+        else:
+            self.selected.remove(cb.text())
+        print(self.selected)
