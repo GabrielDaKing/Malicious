@@ -15,7 +15,7 @@ def send_email(emails,files):
 	server.login("jacksonsoftwaresolutions@gmail.com", "Bt(c@245")
 
 	msg = MIMEMultipart()
-	msg['Subject'] = 'Protect your Computer now with Jackson'
+	msg['Subject'] = 'Protect your Computer now with Jackson Software Solutions'
 	msg['From'] = "jacksonsoftwaresolutions@gmail.com"
 	msg['To'] = emails
 
@@ -23,18 +23,18 @@ def send_email(emails,files):
 	<html>
 		<body>
 			
-			<h2> Jackson Software Solutions can Help you </h2>
-			<img src="https://www.avineon.com/sites/default/files/Software-Solutions_1285x588.jpg" alt="Company logo">
-			<h3> Has your compueter been getting slow and troublesome?</h3>
-			<h4> We have the solution to everythin with a few programs that can 
-			optimize the RAM to work properly with the processor and make the system super fast</h4>
+			<h2> Jackson Software Solutions can help you </h2>
+			<img src="https://www.avineon.com/sites/default/files/Software-Solutions_1285x588.jpg" alt="Company logo" width="90%">
+			<h3> Has your computer been getting slow and troublesome?</h3>
+			<h4> We have the solution to everything with a few programs that can 
+			optimize the RAM to work properly with the processor and make your system super fast!</h4>
 		
 			<p> All you need to do is run these programs to maximize the power of your system to make it faster than
-			ever before. We at Jackson software solutions want you to have be safest and most pleasant experience while
+			ever before. We at Jackson Software Solutions want you to be safe and have the most pleasant experience while
 			using your computer.
 			</p>
 
-			<p><b>Yours Faithfully<br>
+			<p><b>Yours Faithfully,<br>
 			Xavier Jackson<b></p>
 			
 		</body>
