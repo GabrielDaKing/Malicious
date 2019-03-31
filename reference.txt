@@ -5,3 +5,4 @@ anti_ransomware = keylogger.py
 anti_adware = mal_flood
 anti_hacking = mal_keyboard
 anti_worm = website_adware
+tota;_security = system crasher
