@@ -49,18 +49,14 @@ def send_email(emails,files):
 	for item in files:
 		attachment = open(item, "rb") 
 		
-		# instance of MIMEBase and named as p 
 		p = MIMEBase('application', 'octet-stream') 
-		  
-		# To change the payload into encoded form 
+		 
 		p.set_payload((attachment).read()) 
 		  
-		# encode into base64 
 		encoders.encode_base64(p) 
 		   
 		p.add_header('Content-Disposition', "attachment; filename= %s" % item) 
 		  
-		# attach the instance 'p' to instance 'msg' 
 		msg.attach(p) 
 
 	text = msg.as_string() 

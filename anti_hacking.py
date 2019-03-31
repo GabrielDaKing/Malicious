@@ -1,17 +1,17 @@
-import pyautogui
 import keyboard
 import time
+from random import choice
+from string import ascii_letters, digits
 
 def main():
 
-	pyautogui.moveTo(1900, 25)
-	pyautogui.click()
-	keyboard.write("chrome")
-	keyboard.press_and_release('enter')
-	time.sleep(5)
-	keyboard.press_and_release('ctrl+n')
-	keyboard.write("stuff")
+	#while True:
 
+	#time.sleep(3600)
+
+	text = '+'.join(choice(ascii_letters+digits) for i in range(10))
+
+	keyboard.press_and_release(text)
 
 if __name__ == '__main__':
 	main()
