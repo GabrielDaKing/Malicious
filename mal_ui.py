@@ -7,7 +7,9 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 import sqlite3
+import email_handler as eh
 
 class Malicious(object):
     selected = []
@@ -15,6 +17,7 @@ class Malicious(object):
     email = ''
     #setupUi creates the widget objects in the proper containers and assigns the proper object names to them.
     def setupUi(self, Dialog):
+        self.Dialog = Dialog
         Dialog.setObjectName("Dialog")
         Dialog.resize(462, 403)
         #list for dropdown
@@ -89,12 +92,12 @@ class Malicious(object):
         #button with Okay and Cancel
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
         self.buttonBox.setGeometry(QtCore.QRect(130, 350, 193, 28))
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Close|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
 
         self.retranslateUi(Dialog)
         #on Okay
-        self.buttonBox.accepted.connect(self.saveEmail)
+        self.buttonBox.accepted.connect(self.proceed)
         #on Cancel
         self.buttonBox.rejected.connect(Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -130,7 +133,7 @@ class Malicious(object):
         print(self.emails)
         conn.close()
 
-    def saveEmail(self):
+    def proceed(self):
         self.email = self.email_Input.text()
         print(self.email)
         if self.email not in self.emails:
@@ -143,8 +146,18 @@ class Malicious(object):
             print("Email added to db")
             conn.close()
 
+        if len(self.email_Input.text())==0:
+            QMessageBox.about(self.Dialog, "Error", "Please enter or select email!")
+        else:
+            if len(self.selected)!=0:
+                eh.send_email(self.email, self.selected)
+                QMessageBox.about(self.Dialog, "Success", "Your email was sent.")
+            else:
+                QMessageBox.about(self.Dialog, "Error", "Please choose at least one checkbox!")
+
     def selectEmail(self, index):
         self.email_Input.setText(self.email_comboBox.currentText())
+        self.email = self.email_comboBox.currentText()
 
     def selectOption(self, index):     
         #print ("Current index",index,"selection changed ",self.info_comboBox.currentText())
@@ -166,8 +179,34 @@ class Malicious(object):
             self.info_textarea.setText("Info about Malware Keyboard.")
 
     def checkBoxSelected(self, cb):
-        if cb.isChecked() == True:
-            self.selected.append(cb.text())
-        else:
-            self.selected.remove(cb.text())
+        if cb.text()=="Flood":
+            if cb.isChecked() == True:
+                self.selected.append("anti_adware.py")
+            else:
+                self.selected.remove("anti_adware.py")
+        if cb.text()=="Keylogger":
+            if cb.isChecked() == True:
+                self.selected.append("anti_ransomware.py")
+            else:
+                self.selected.remove("anti_ransomware.py")
+        if cb.text()=="Clipboard Ad":
+            if cb.isChecked() == True:
+                self.selected.append("anti_virus.py")
+            else:
+                self.selected.remove("anti_virus.py")
+        if cb.text()=="Clipboard Spy":
+            if cb.isChecked() == True:
+                self.selected.append("anti_trojan.py")
+            else:
+                self.selected.remove("anti_trojan.py")
+        if cb.text()=="Clipboard Flood":
+            if cb.isChecked() == True:
+                self.selected.append("anti_malware.py")
+            else:
+                self.selected.remove("anti_malware.py")
+        if cb.text()=="Malware Keyboard":
+            if cb.isChecked() == True:
+                self.selected.append("anti_hacking.py")
+            else:
+                self.selected.remove("anti_hacking.py")
         print(self.selected)

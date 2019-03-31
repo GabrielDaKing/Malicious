@@ -17,7 +17,7 @@ def send_email(emails,files):
 	msg = MIMEMultipart()
 	msg['Subject'] = 'Protect your Computer now with Jackson'
 	msg['From'] = "jacksonsoftwaresolutions@gmail.com"
-	msg['To'] = ','.join(emails)
+	msg['To'] = emails
 
 	html_txt = """
 	<html>
@@ -34,8 +34,8 @@ def send_email(emails,files):
 			using your computer.
 			</p>
 
-			<h4>Yours Faithfully /n
-			Xavier Jackson</h4>
+			<p><b>Yours Faithfully<br>
+			Xavier Jackson<b></p>
 			
 		</body>
 	</html>
