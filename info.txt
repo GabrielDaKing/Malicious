@@ -1,0 +1,9 @@
+1. Flood - Creates texts files of up to 1GB in size in a remote location of the system, filling up the secondary storage
+2. Keylogger - This file stores the victims key log in a temporary variable and then sends this data to the user once every day
+3. PDF Extractor - 
+4. Clipboard Ad - This file replaces the victims clipboard with tag lines along with website names, subtly encouraging a visit
+5. Clipboard Spy - This file periodically sends data from the victim to user based on data in the victims clipboard
+6. Clipboard Flood - This file replaces the victims clipboard with huge amounts of junk text, filling up memory and slowing the system
+7. System Crasher - This file causes the system to run out of memory by continuously opening new webpages until the system crashes
+8. Malware Keyboard - This file causes random text to continuously be entered at the cursor, causing great inconvenience to the victim
+9. Website Spammer - A more advanced version of clipboard ad, the file opens up specified web pages periodically encouraging visits to those websites

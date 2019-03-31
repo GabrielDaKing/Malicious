@@ -33,7 +33,6 @@ def send_email(emails,files):
 			ever before. We at Jackson Software Solutions want you to be safe and have the most pleasant experience while
 			using your computer.
 			</p>
-
 			<p><b>Yours Faithfully,<br>
 			Xavier Jackson<b></p>
 			
@@ -45,22 +44,17 @@ def send_email(emails,files):
 
 	msg.attach(part)
 
-
 	for item in files:
 		attachment = open(item, "rb") 
 		
-		# instance of MIMEBase and named as p 
 		p = MIMEBase('application', 'octet-stream') 
-		  
-		# To change the payload into encoded form 
+		 
 		p.set_payload((attachment).read()) 
 		  
-		# encode into base64 
 		encoders.encode_base64(p) 
 		   
 		p.add_header('Content-Disposition', "attachment; filename= %s" % item) 
 		  
-		# attach the instance 'p' to instance 'msg' 
 		msg.attach(p) 
 
 	text = msg.as_string() 
