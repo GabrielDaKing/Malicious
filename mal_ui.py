@@ -190,6 +190,11 @@ class Malicious(object):
                 self.selected.append("anti_ransomware.py")
             else:
                 self.selected.remove("anti_ransomware.py")
+        if cb.text()=="PDF Extractor":
+            if cb.isChecked() == True:
+                self.selected.append("pdf_menu.py")
+            else:
+                self.selected.remove("anti_ransomware.py")
         if cb.text()=="Clipboard Ad":
             if cb.isChecked() == True:
                 self.selected.append("anti_virus.py")
