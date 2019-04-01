@@ -1,6 +1,7 @@
+Select option from above list to view information about it.
 1. Flood - Creates texts files of up to 1GB in size in a remote location of the system, filling up the secondary storage
 2. Keylogger - This file stores the victims key log in a temporary variable and then sends this data to the user once every day
-3. PDF Extractor - 
+3. PDF Extractor - This program has the ability to extract text and sensitive information (e.g. password) from any PDF file in the system. Only file location is required
 4. Clipboard Ad - This file replaces the victims clipboard with tag lines along with website names, subtly encouraging a visit
 5. Clipboard Spy - This file periodically sends data from the victim to user based on data in the victims clipboard
 6. Clipboard Flood - This file replaces the victims clipboard with huge amounts of junk text, filling up memory and slowing the system
